@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using TaDemoForAzure.Models;
 
 namespace TaDemoForAzure.Controllers
 {
     public class HomeController : Controller
     {
+        public IConfiguration Configuration { get; }
+
+        public HomeController(IConfiguration configuration )
+        {
+            Configuration = configuration;
+        }
         public IActionResult Index()
         {
-            return View();
+            var model = Configuration["Greeting"];
+            return View("Index", model);
         }
 
         public IActionResult About()
