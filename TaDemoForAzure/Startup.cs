@@ -20,6 +20,7 @@ namespace TaDemoForAzure
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Console.WriteLine("this is just for testing....");
         }
 
         public IConfiguration Configuration { get; }
